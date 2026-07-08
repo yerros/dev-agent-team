@@ -6,7 +6,10 @@
   "plugins": [
     {
       "name": "dev-agent-team",
-      "source": "./"
+      "source": {
+        "source": "github",
+        "repo": "yerros/dev-agent-team"
+      }
     }
   ]
 }
