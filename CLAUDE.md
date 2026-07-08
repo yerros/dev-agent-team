@@ -35,10 +35,11 @@ docs/                        Development docs (this set). NOT shipped in the .pl
 1. Scripts have **zero runtime dependencies** (Node built-ins only) and run under Node 18+.
 2. Scripts operate on the **user's project** via `process.cwd()`; the **knowledge base lives in the
    project** (`knowledge/*.jsonl`), never inside the plugin.
-3. Hooks reference scripts via `${CLAUDE_PLUGIN_ROOT}/scripts/...` and **stay silent** (exit 0, no
-   output) when the project is not initialized (`knowledge/` absent).
-4. Routing is **by file path**, encoded in the orchestrator's table and `scripts/scope.mjs` globs —
-   keep those two in sync. Routing is a heuristic, not a hard engine (ADR-004).
+3. Hooks reference scripts via `${CLAUDE_PLUGIN_ROOT}/scripts/...`. `prime` and `capture` stay silent
+   (exit 0) until `/init` (they need `knowledge/`); `scope` runs in any JS/TS repo and stays silent only
+   when there is no project to classify.
+4. Routing leads with **project-type detection** in `scripts/scope.mjs` (reads `package.json`/`app.json`);
+   the orchestrator's path table is a monorepo fallback. Routing is a heuristic, not a hard engine (ADR-004, ADR-008).
 5. The `init` skill is the only thing that writes project-side files, and it **never overwrites**.
 6. Never store secrets/PII in knowledge entries, scripts, or docs.
 

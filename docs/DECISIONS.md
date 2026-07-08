@@ -31,3 +31,11 @@ Target projects use Expo (managed). The `mobile` agent detects the setup and pre
 ## ADR-007 — Borrow process skills instead of depending on Superpowers
 `brainstorming` and `tdd` are small in-house skills so the plugin stays self-contained. Superpowers
 remains a compatible companion for deeper process discipline, but is not a dependency.
+
+## ADR-008 — Routing by project-type detection, not path globs
+Real repos vary: a standalone Expo app has everything at the root, so monorepo path globs
+(`apps/mobile/**`) never match. `scope.mjs` now classifies the repo by reading `package.json`/
+`app.json` (expo/react-native → mobile, react/next → frontend, express/fastify/etc → backend) and
+handles monorepos by classifying each package under `apps/`/`packages/`/`services/`. Path globs
+remain only as an ambiguity fallback in the orchestrator. Detection runs without `/init` so it works
+the moment the plugin is enabled.

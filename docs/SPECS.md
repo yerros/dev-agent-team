@@ -24,8 +24,9 @@ nearest `CLAUDE.md`, (3) implement to the DoD, (4) run checks and report real re
 All: Node 18+, built-ins only, operate on `process.cwd()`, exit 0 on success.
 - `prime.mjs [--keywords "a b"]` — reads `./knowledge/*.jsonl`; prints categorized facts
   (MUST FOLLOW / GOTCHAS / PATTERNS / DECISIONS). **Silent (exit 0, no output) if `knowledge/` is absent.**
-- `scope.mjs` — reads `git status --porcelain`, maps changed paths to specialists via `rules`, prints
-  one hint line. **Silent if uninitialized or nothing maps.** Keep `rules` in sync with the orchestrator table.
+- `scope.mjs` — classifies the repo by reading `package.json`/`app.json` (each package in a monorepo)
+  and prints one routing hint (e.g. `Detected: Expo mobile app -> route work to @mobile`). **Silent only
+  when there is no JS/TS project.** Runs in any repo, independent of `/init` and the knowledge base.
 - `capture.mjs` — appends one `{type:"signal",...}` line to `knowledge/_inbox.jsonl`. **Silent if uninitialized.**
 - `promote.mjs "<rule>"` — appends `- <rule>` under `## Enforced rules (promoted)` in `CLAUDE.md`; idempotent.
 - `init.mjs` — seeds `knowledge/*.jsonl`, `CLAUDE.md`, and `.claude/scripts/`. **Never overwrites** existing files.

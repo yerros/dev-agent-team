@@ -2,6 +2,11 @@
 
 All notable changes to dev-agent-team. Format: Keep a Changelog-ish; versions use semver.
 
+## [0.3.0] — 2026-07-08
+### Changed
+- `scope.mjs` is now a **project-type detector**: it reads `package.json`/`app.json` and works in ANY repo (standalone Expo/RN app, React web, Node backend, or a mixed monorepo) instead of relying on hardcoded monorepo path globs. Runs without needing `/init`.
+- Orchestrator routing leads with detected project type; the path table is now only a fallback.
+
 ## [0.2.0] — 2026-07-08
 ### Added
 - `tester` and `security` agents; orchestrator now runs independent verification (tester + security + reviewer).
