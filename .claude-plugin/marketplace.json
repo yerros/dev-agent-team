@@ -1,0 +1,14 @@
+{
+  "name": "dev-agent-team-local",
+  "owner": {
+    "name": "yerros"
+  },
+  "plugins": [
+    {
+      "name": "dev-agent-team",
+      "source": {
+        "directory": "."
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "dev-agent-team",
+  "version": "0.2.0",
+  "description": "A self-improving multi-agent dev team for Claude Code: an orchestrator that routes work by file path to frontend (React), mobile (React Native + Expo), and backend (Node) specialists, with independent review, security and test agents, a JSONL knowledge base, and a prime -> work -> reflect learning loop.",
+  "author": {
+    "name": "yerros"
+  },
+  "keywords": [
+    "agents",
+    "orchestrator",
+    "react",
+    "react-native",
+    "expo",
+    "node",
+    "monorepo",
+    "memory",
+    "self-improving"
+  ],
+  "license": "MIT",
+  "hooks": "./hooks/hooks.json"
+}
