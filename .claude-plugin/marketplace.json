@@ -6,9 +6,7 @@
   "plugins": [
     {
       "name": "dev-agent-team",
-      "source": {
-        "directory": "."
-      }
+      "source": "./"
     }
   ]
 }
